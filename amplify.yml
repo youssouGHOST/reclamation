@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 20
+        - nvm use 20
+        - npm install
+    build:
+      commands:
+        - flutter pub get
+        - flutter build apk --release
+  artifacts:
+    baseDirectory: build/app/outputs/flutter-apk
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - ~/.pub-cache
